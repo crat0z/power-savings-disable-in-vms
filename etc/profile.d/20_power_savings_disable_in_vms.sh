@@ -17,8 +17,8 @@ if ! shopt -q login_shell ; then
    exit 0
 fi
 
-if ! test -x /usr/sbin/virt-what >/dev/null ; then
-   $output_cmd "$script_name: /usr/sbin/virt-what not executable found. Stop."
+if ! test -x /usr/bin/systemd-detect-virt >/dev/null ; then
+   $output_cmd "$script_name: /usr/bin/systemd-detect-virt not executable found. Stop."
    return 0
    exit 0
 fi
@@ -29,7 +29,7 @@ if ! command -v setterm >/dev/null ; then
    exit 0
 fi
 
-result="$(sudo virt-what)"
+result="$(systemd-detect-virt)"
 
 if [ "$result" = "" ]; then
    $output_cmd "$script_name:Not running in a Virtual Machine (or none detected), therefore not disabling monitor power saving. Stop."

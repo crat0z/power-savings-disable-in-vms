@@ -1,3 +1,5 @@
 ## required to detect whether we are running in a virtual machine or not in
 ## /etc/profile.d/20_disable_powersaving.sh
-ALL ALL=NOPASSWD: /usr/sbin/virt-what
+ALL ALL=NOPASSWD: /usr/bin/systemd-detect-virt
+
+## Should the above be commented out, now that we're using systemd-detect-virt?
